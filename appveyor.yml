@@ -1,0 +1,5 @@
+image: ubuntu
+
+build_script:
+  - sh: dotnet build -c Release /home/appveyor/projects/gppg/src/Springcomp.GPPG.Runtime/Springcomp.GPPG.Runtime.csproj 
+  - sh: dotnet build -c Release /home/appveyor/projects/gppg/src/Springcomp.GPPG/Springcomp.GPPG.csproj 
