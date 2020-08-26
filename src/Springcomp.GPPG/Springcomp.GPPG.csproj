@@ -1,8 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>dotnet-gppg</ToolCommandName>
     <Description>Tools based on Gardens Point Parser Generator version 1.5.2</Description>
     <Copyright>Queensland University of Technology (QUT), Wayne Kelly, John Gough 2005-2014, Starodub Oleg, 2016</Copyright>
     <PackageLicenseFile>License.md</PackageLicenseFile>
@@ -12,7 +15,7 @@
     <Product />
     <Authors>Wayne Kelly;John Gough;Starodub Oleg</Authors>
     <PackageId>Springcomp.GPPG</PackageId>
-    <Version>1.0.0-preview</Version>
+    <Version>1.0.0-preview-2</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,9 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Scanner.cs" />
-    <Compile Include="ScanAction.cs" />
-    <Compile Include="Parser.cs" />
+    <Compile Include="Scanner.cs" Condition=" !Exists('Scanner.cs') " />
+    <Compile Include="ScanAction.cs" Condition=" !Exists('ScanAction.cs') " />
+    <Compile Include="Parser.cs" Condition=" !Exists('Parser.cs') " />
   </ItemGroup>
 
   <Target Name="ScannerGenerator" BeforeTargets="BeforeBuild" Condition=" '$(IsCrossTargetingBuild)' != 'true' " Inputs="gppg.lex;ScanAction.lex" Outputs="Scanner.cs;ScanAction.cs">
