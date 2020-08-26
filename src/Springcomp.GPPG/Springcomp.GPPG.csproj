@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Springcomp.GPPG.Runtime\Sprincomp.GPPG.Runtime.csproj" />
+    <ProjectReference Include="..\Springcomp.GPPG.Runtime\Springcomp.GPPG.Runtime.csproj" />
   </ItemGroup>
 
   <ItemGroup>
