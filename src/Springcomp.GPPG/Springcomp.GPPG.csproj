@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Tools based on Gardens Point Parser Generator version 1.5.2</Description>
+    <Copyright>Queensland University of Technology (QUT), Wayne Kelly, John Gough 2005-2014, Starodub Oleg, 2016</Copyright>
+    <PackageLicenseFile>License.md</PackageLicenseFile>
+    <PackageTags>GPPG;Parser;netcore</PackageTags>
+    <AssemblyName>dotnet-gppg</AssemblyName>
+    <Company>Queensland University of Technology (QUT)</Company>
+    <Product />
+    <Authors>Wayne Kelly;John Gough;Starodub Oleg</Authors>
+    <PackageId>Springcomp.GPPG</PackageId>
+    <Version>1.0.0-preview</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <Target Name="ScannerGenerator" BeforeTargets="BeforeBuild" Condition=" '$(IsCrossTargetingBuild)' != 'true' " Inputs="gppg.lex;ScanAction.lex" Outputs="Scanner.cs;ScanAction.cs">
+    <Exec Command="dotnet gplex gppg.lex" WorkingDirectory="$(MSBuildProjectDirectory)" />
+    <Exec Command="dotnet gplex ScanAction.lex" WorkingDirectory="$(MSBuildProjectDirectory)" />
+  </Target>
+
+  <Target Name="ParserGenerator" BeforeTargets="BeforeBuild" Condition=" '$(IsCrossTargetingBuild)' != 'true' " Inputs="gppg.y" Outputs="Parser.cs">
+    <Exec Command="dotnet gppg /gplex /nolines gppg.y" WorkingDirectory="$(MSBuildProjectDirectory)" />
+  </Target>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="StarodubOleg.GPLEX" Version="0.1.0-alpha1-5" />
+    <DotNetCliToolReference Include="StarodubOleg.GPPG" Version="0.1.0-alpha1-5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Springcomp.GPPG.Runtime\Sprincomp.GPPG.Runtime.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\License.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
