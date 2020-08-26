@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Springcomp.GPPG", "Springcomp.GPPG\Springcomp.GPPG.csproj", "{289BF4DC-218B-4B3C-975A-99D0B15EE464}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sprincomp.GPPG.Runtime", "Springcomp.GPPG.Runtime\Sprincomp.GPPG.Runtime.csproj", "{9A31FA4A-5EE8-4DBF-9CB4-512F9C91E0BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Springcomp.GPPG.Runtime", "Springcomp.GPPG.Runtime\Springcomp.GPPG.Runtime.csproj", "{9A31FA4A-5EE8-4DBF-9CB4-512F9C91E0BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

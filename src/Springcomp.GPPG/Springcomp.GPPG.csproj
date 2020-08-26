@@ -19,6 +19,12 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="Scanner.cs" />
+    <Compile Include="ScanAction.cs" />
+    <Compile Include="Parser.cs" />
+  </ItemGroup>
+
   <Target Name="ScannerGenerator" BeforeTargets="BeforeBuild" Condition=" '$(IsCrossTargetingBuild)' != 'true' " Inputs="gppg.lex;ScanAction.lex" Outputs="Scanner.cs;ScanAction.cs">
     <Exec Command="dotnet gplex gppg.lex" WorkingDirectory="$(MSBuildProjectDirectory)" />
     <Exec Command="dotnet gplex ScanAction.lex" WorkingDirectory="$(MSBuildProjectDirectory)" />
