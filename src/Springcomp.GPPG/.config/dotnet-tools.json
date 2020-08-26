@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "springcomp.gplex": {
+      "version": "1.0.0-preview-2",
+      "commands": [
+        "dotnet-gplex"
+      ]
+    },
+    "springcomp.gppg": {
+      "version": "1.0.0-preview-3",
+      "commands": [
+        "dotnet-gppg"
+      ]
+    }
+  }
+}

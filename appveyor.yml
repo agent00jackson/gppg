@@ -6,6 +6,7 @@ branches:
     - /^v\d+\.\d+\.\d+\.\d+$/
 
 build_script:
+  - sh: dotnet tool restore --tool-manifest /home/appveyor/projects/gppg/src/Springcomp.GPPG/.config/dotnet-tools.json
   - sh: dotnet build -c Release /home/appveyor/projects/gppg/src/Springcomp.GPPG.Runtime/Springcomp.GPPG.Runtime.csproj 
   - sh: dotnet build -c Release /home/appveyor/projects/gppg/src/Springcomp.GPPG/Springcomp.GPPG.csproj 
 

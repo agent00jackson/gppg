@@ -15,7 +15,7 @@
     <Product />
     <Authors>Wayne Kelly;John Gough;Starodub Oleg</Authors>
     <PackageId>Springcomp.GPPG</PackageId>
-    <Version>1.0.0-preview-3</Version>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,11 +36,6 @@
   <Target Name="ParserGenerator" BeforeTargets="BeforeBuild" Condition=" '$(IsCrossTargetingBuild)' != 'true' " Inputs="gppg.y" Outputs="Parser.cs">
     <Exec Command="dotnet gppg /gplex /nolines gppg.y" WorkingDirectory="$(MSBuildProjectDirectory)" />
   </Target>
-
-  <ItemGroup>
-    <DotNetCliToolReference Include="StarodubOleg.GPLEX" Version="0.1.0-alpha1-5" />
-    <DotNetCliToolReference Include="StarodubOleg.GPPG" Version="0.1.0-alpha1-5" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Springcomp.GPPG.Runtime\Springcomp.GPPG.Runtime.csproj" />
