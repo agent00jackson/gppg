@@ -16,8 +16,8 @@ For use in dotnet core projects you need add next text in csproj
   </Target>
 
   <ItemGroup>
-    <DotNetCliToolReference Include="Springcomp.GPLEX" Version="1.0.0-preview" />
-    <DotNetCliToolReference Include="Springcomp.GPPG" Version="1.0.0-preview" />
+    <DotNetCliToolReference Include="Springcomp.GPLEX" Version="1.0.0-preview-4" />
+    <DotNetCliToolReference Include="Springcomp.GPPG" Version="1.0.0-preview-3" />
   </ItemGroup>
 
 
