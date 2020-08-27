@@ -28,12 +28,26 @@
     <Compile Include="Parser.cs" Condition=" !Exists('Parser.cs') " />
   </ItemGroup>
 
-  <Target Name="ScannerGenerator" BeforeTargets="BeforeBuild" Condition=" '$(IsCrossTargetingBuild)' != 'true' " Inputs="gppg.lex;ScanAction.lex" Outputs="Scanner.cs;ScanAction.cs">
+  <Target Name="_RestoreDotnetCliTool"
+    Inputs="gppg.lex;ScanAction.lex;gppg.y"
+    Outputs="Scanner.cs;ScanAction.cs;Parser.cs">
+    <Exec Command="dotnet tool restore" />
+  </Target>
+
+  <Target Name="ScannerGenerator"
+    DependsOnTargets="_RestoreDotnetCliTool"
+    BeforeTargets="BeforeBuild"
+    Condition=" '$(IsCrossTargetingBuild)' != 'true' "
+    Inputs="gppg.lex;ScanAction.lex" Outputs="Scanner.cs;ScanAction.cs">
     <Exec Command="dotnet gplex gppg.lex" WorkingDirectory="$(MSBuildProjectDirectory)" />
     <Exec Command="dotnet gplex ScanAction.lex" WorkingDirectory="$(MSBuildProjectDirectory)" />
   </Target>
 
-  <Target Name="ParserGenerator" BeforeTargets="BeforeBuild" Condition=" '$(IsCrossTargetingBuild)' != 'true' " Inputs="gppg.y" Outputs="Parser.cs">
+  <Target Name="ParserGenerator"
+    DependsOnTargets="_RestoreDotnetCliTool"
+    BeforeTargets="BeforeBuild"
+    Condition=" '$(IsCrossTargetingBuild)' != 'true' "
+    Inputs="gppg.y" Outputs="Parser.cs">
     <Exec Command="dotnet gppg /gplex /nolines gppg.y" WorkingDirectory="$(MSBuildProjectDirectory)" />
   </Target>
 
