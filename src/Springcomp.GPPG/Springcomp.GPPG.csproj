@@ -15,7 +15,7 @@
     <Product />
     <Authors>Wayne Kelly;John Gough;Starodub Oleg</Authors>
     <PackageId>Springcomp.GPPG</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.0-gtri</Version>
   </PropertyGroup>
 
   <ItemGroup>
